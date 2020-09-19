@@ -22,7 +22,6 @@ def transform_image(image_bytes):
 
 
 def get_prediction(image_tensor):
-    images = image_tensor
-    outputs = model(images)
+    outputs = model(image_tensor)
     probability, prediction = torch.max(outputs.data, 1)
     return probability, prediction

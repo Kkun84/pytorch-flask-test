@@ -10,11 +10,13 @@ model = Model()
 
 
 def transform_image(image_bytes):
-    transform = transforms.Compose([
-        transforms.Resize((224,)*2),
-        transforms.ToTensor(),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ])
+    transform = transforms.Compose(
+        [
+            transforms.Resize((224,) * 2),
+            transforms.ToTensor(),
+            transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ]
+    )
     image = Image.open(io.BytesIO(image_bytes))
     image_tensor = transform(image)
     image_tensor = image_tensor.unsqueeze(0)

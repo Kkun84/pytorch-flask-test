@@ -2,9 +2,11 @@ import json
 from flask import Flask, request, jsonify
 
 from app.torch_utils import transform_image, get_prediction
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app)
 
 
 with open("app/imagenet_class_index.json", mode="r") as f:
